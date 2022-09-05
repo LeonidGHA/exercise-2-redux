@@ -5,7 +5,9 @@ import { addProductAction } from "../redux/actions";
 export default function Home() {
   const [goods, setGoods] = useState([]);
   const dispatch = useDispatch();
-  const { cart } = useSelector((store) => store);
+  const {
+    cart: { items: cart },
+  } = useSelector((store) => store);
 
   useEffect(() => {
     function fetchGoods() {

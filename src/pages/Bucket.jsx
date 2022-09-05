@@ -3,7 +3,7 @@ import { removeProductAction } from "../redux/actions";
 
 export default function Bucket() {
   const goods = useSelector((state) => {
-    return state.cart;
+    return state.cart.items;
   });
   const dispatch = useDispatch();
 
