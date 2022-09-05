@@ -1,7 +1,18 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { cartReducer, filterCartReducer } from "./reducer";
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { filterCartReducer } from "./reducer";
+import { cartReducer } from "./toolkit/reducer";
 
-export default combineReducers({
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["items"],
+}
+
+const combreducer = combineReducers({
   items: cartReducer,
   filter: filterCartReducer,
 });
+
+export const persistedReducer = persistReducer(persistConfig, combreducer)
